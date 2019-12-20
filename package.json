@@ -1,0 +1,19 @@
+{
+  "name": "humbahumbabot",
+  "version": "1.0.0",
+  "description": "킹갓제너럴뎀바바의 충견 훔바훔바가 긁어주는 해외축구 뉴스",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/belldoor/humbahumbabot.git"
+  },
+  "author": "belldoor <belldoor444@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/belldoor/humbahumbabot/issues"
+  },
+  "homepage": "https://github.com/belldoor/humbahumbabot#readme"
+}
