@@ -1,9 +1,16 @@
 {
   "name": "humbahumbabot",
   "version": "1.0.0",
-  "description": "킹갓제너럴뎀바바의 충견 훔바훔바가 긁어주는 해외축구 뉴스",
-  "main": "index.js",
+  "description": "킹갓제너럴뎀바바의 충견 스티븐 훔바훔바가 긁어주는 해외축구 뉴스",
+  "main": "dist/server.js",
   "scripts": {
+    "clean": "rimraf dist/*",
+    "lint": "tslint -c tslint.json -p tsconfig.json --fix",
+    "tsc": "tsc",
+    "build": "npm-run-all clean lint tsc",
+    "dev:start": "npm-run-all build start",
+    "dev": "nodemon --watch src -e ts --exec npm run dev:start",
+    "start": "node .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +22,31 @@
   "bugs": {
     "url": "https://github.com/belldoor/humbahumbabot/issues"
   },
-  "homepage": "https://github.com/belldoor/humbahumbabot#readme"
+  "homepage": "https://github.com/belldoor/humbahumbabot#readme",
+  "dependencies": {
+    "@types/body-parser": "^1.17.1",
+    "@types/express": "^4.17.2",
+    "@types/lodash": "^4.14.149",
+    "@types/puppeteer": "^2.0.0",
+    "@types/winston": "^2.4.4",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "puppeteer": "^2.0.0",
+    "telegraf": "^3.34.1",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/node": "^12.12.21",
+    "fs-extra": "^8.1.0",
+    "nodemon": "^2.0.2",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.0",
+    "ts-node": "^8.5.4",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.4"
+  }
 }
