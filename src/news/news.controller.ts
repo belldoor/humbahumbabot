@@ -42,7 +42,7 @@ class NewsController {
     bot.start((ctx) => {
       // TODO: collect chatId at AWS S3 from new registered user
       ctx.reply(weGoNorwich)
-      ctx.reply('어서와! 훔바훔바는 처음이지? 매일 오전 9시를 기다리라구! 흠허허')
+      ctx.reply('어서와! 훔바훔바는 처음이지? 매일 오전 8시를 기다리라구! 흠허허')
     })
 
     const resultMessage = news.map((msg) => {
