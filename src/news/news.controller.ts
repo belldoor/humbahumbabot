@@ -52,8 +52,8 @@ class NewsController {
     try {
       // HACK: Temporary using personal chatId
       const titleMessage = `${date.format('YYYY년 MM월 DD일')}의 인기 해외 축구 뉴스 TOP 60을 보여줄게~`
-      bot.telegram.sendMessage(PERSONAL_CHAT_ID, titleMessage, { parse_mode: 'Markdown'})
-      bot.telegram.sendMessage(PERSONAL_CHAT_ID, resultMessage, { parse_mode: 'Markdown'})
+      await bot.telegram.sendMessage(PERSONAL_CHAT_ID, titleMessage, { parse_mode: 'Markdown'})
+      await bot.telegram.sendMessage(PERSONAL_CHAT_ID, resultMessage, { parse_mode: 'Markdown'})
     } catch (error) {
       throw new Error(error)
     }
