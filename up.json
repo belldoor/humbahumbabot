@@ -1,0 +1,17 @@
+{
+  "name": "humbabot-api",
+  "profile": "HumbaBot",
+  "regions": ["ap-northeast-2"],
+  "lambda": {
+    "runtime": "nodejs12.x",
+    "memory": 1024
+  },
+  "proxy": {
+    "timeout": 25,
+    "listen_timeout": 15
+  },
+  "environment": {
+    "BOT_TOKEN": "my_token",
+    "PERSONAL_CHAT_ID": "my_personal_chat_id"
+  }
+}
