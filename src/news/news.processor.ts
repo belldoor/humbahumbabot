@@ -1,10 +1,11 @@
 import _ from 'lodash'
-import puppeteer from 'puppeteer'
 import querystring from 'querystring'
 import { logger } from '../util/logger'
+// tslint:disable-next-line: no-var-requires
+const chromium = require('chrome-aws-lambda')
 
 interface INewsResult {
-  header: string
+  title: string
   href: string
 }
 
@@ -13,21 +14,24 @@ class NewsProcessor {
   private path: string = '/wfootball/news/index.nhn?isphoto=N&view=text&type=popular'
   private selector: string = 'div#_newsList ul'
   private pageSelector: string = 'div#_pageList'
-  private browser: puppeteer.Browser
-  private page: puppeteer.Page
+  private browser: any
+  private page: any
 
   public getDailyWFootBallNews = async (date: string) => {
     await this.openPage()
-    const maxPage = Number(await this.getPageCount(date, 1))
+    // Error: 400: Bad Request: message is too long
+    // const maxPage = Number(await this.getPageCount(date, 1))
+    const maxPage = 3
 
     logger.info(`${date}'s maxPage is ${maxPage}, start crawling news headline from each pages.`)
 
     if (!Number.isInteger(maxPage)) {
-      return
+      throw new Error(`Invalid maxPage: ${maxPage}`)
     }
 
     const result = []
     for (const page of _.range(1, maxPage + 1)) {
+      logger.info(`Current page: ${page}`)
       const currentHeadlines: [INewsResult] = await this.getPageHeadlines(date, page)
       result.push(currentHeadlines)
     }
@@ -39,20 +43,17 @@ class NewsProcessor {
   }
 
   public closeBrowser = async () => {
+    logger.info(`Closing browser..`)
     await this.browser.close()
   }
 
   public async initialize() {
     logger.info('Initializing for puppeteer..')
-    this.browser = await puppeteer.launch({
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-dev-shm-usage'
-      ],
-      devtools: false,
-      headless: true,
-      ignoreHTTPSErrors: true,
+    this.browser = await chromium.puppeteer.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath,
+      headless: chromium.headless,
     })
   }
 

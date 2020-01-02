@@ -1,12 +1,12 @@
 import App from './app'
 import NewsController from './news/news.controller'
 
-const SERVER_PORT: number = Number(process.env.SERVER_PORT) || 8080
+const { PORT = 3000 } = process.env
 const app = new App(
   [
-    new NewsController(),
+    new NewsController()
   ],
-  SERVER_PORT,
+  Number(PORT),
 )
 
 app.listen()
