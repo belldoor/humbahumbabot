@@ -16,7 +16,7 @@ $ curl localhost:3000/
 
 
 # Telegram 지원
-![humbabot-image](https://user-images.githubusercontent.com/8427455/71658898-da549580-2d88-11ea-8ed5-664b500e990d.png)\
+![humbabot-image](https://user-images.githubusercontent.com/8427455/71658898-da549580-2d88-11ea-8ed5-664b500e990d.png)
 * 텔레그램에서 훔바훔바(@HumbaHumbaBot) 친구 추가
 * `/start`
 * 리버풀의 대표 레전드 [스티븐 훔바훔바](https://namu.wiki/w/%EC%8A%A4%ED%8B%B0%EB%B8%90%20%EC%A0%9C%EB%9D%BC%EB%93%9C)가 매일 오전 8시에 네이버 해외 축구 인기 기사를 물어다줍니다!
