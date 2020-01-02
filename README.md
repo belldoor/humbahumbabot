@@ -2,21 +2,24 @@
 ![teamwork-cat-dog](https://extmovie.com/files/attach/images/148/030/648/041/4cc6c42959c87f70cd54a33b8d1ee44b.gif)\
 [킹갓제너럴뎀바바](https://namu.wiki/w/%EB%8E%80%EB%B0%94%20%EB%B0%94)의 충견 [스티븐 훔바훔바](https://namu.wiki/w/%EC%8A%A4%ED%8B%B0%EB%B8%90%20%EC%A0%9C%EB%9D%BC%EB%93%9C)가 긁어주는 해외축구 뉴스!
 
+
 # How to
 ```
 $ git clone https://github.com/belldoor/humbahumbabot.git
 $ npm install
 $ npm run dev
 // 특정 일자에 게시된 인기 순 뉴스 긁어오기
-$ curl -d {"date":"20200101"}' -X POST localhost:8080/
+$ curl -d {"date":"20200101"}' -X POST localhost:3000/
 // 금일 날짜에 게시된 인기 순 뉴스 긁어오기
-$ curl localhost:8080/
+$ curl localhost:3000/
 ```
+
 
 # Telegram 지원
 * 텔레그램에서 훔바훔바(@HumbaHumbaBot) 친구 추가
 * `/start`
 * 리버풀의 대표 레전드 [스티븐 훔바훔바](https://namu.wiki/w/%EC%8A%A4%ED%8B%B0%EB%B8%90%20%EC%A0%9C%EB%9D%BC%EB%93%9C)가 매일 오전 8시에 네이버 해외 축구 인기 기사를 물어다줍니다!
+
 
 # AWS Lambda vs 로컬에서 실행하기
 * 훔바봇은 네이버 해외 축구 뉴스를 크롤링 하기 위해 크롬이 임베드 되어 있는 puppeteer를 사용합니다.
