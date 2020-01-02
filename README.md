@@ -1,5 +1,5 @@
 # 훔바훔바 봇
-![teamwork-cat-dog](https://extmovie.com/files/attach/images/148/030/648/041/4cc6c42959c87f70cd54a33b8d1ee44b.gif)
+![teamwork-cat-dog](https://extmovie.com/files/attach/images/148/030/648/041/4cc6c42959c87f70cd54a33b8d1ee44b.gif)\
 [킹갓제너럴뎀바바](https://namu.wiki/w/%EB%8E%80%EB%B0%94%20%EB%B0%94)의 충견 [스티븐 훔바훔바](https://namu.wiki/w/%EC%8A%A4%ED%8B%B0%EB%B8%90%20%EC%A0%9C%EB%9D%BC%EB%93%9C)가 긁어주는 해외축구 뉴스!
 
 # How to
