@@ -11,7 +11,7 @@
     "dev:build": "npm-run-all clean lint tsc",
     "dev:start": "npm-run-all build start",
     "dev": "nodemon --watch src -e ts --exec npm run dev:start",
-    "start": "node .",
+    "start": "node -r dotenv/config .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
