@@ -7,12 +7,13 @@
     "clean": "rimraf dist/*",
     "lint": "tslint -c tslint.json -p tsconfig.json --fix",
     "tsc": "tsc",
-    "build": "npm-run-all clean tsc",
-    "dev:build": "npm-run-all clean lint tsc",
+    "build": "npm-run-all tsc",
+    "dev:build": "npm-run-all lint tsc",
     "dev:start": "npm-run-all build start",
     "dev": "nodemon --watch src -e ts --exec npm run dev:start",
     "start": "node -r dotenv/config .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ts-node node_modules/jasmine/bin/jasmine --config=jasmine.json",
+    "coverage": "nyc -r text -e .ts -x \"tests/*.test.ts\" npm run test"
   },
   "repository": {
     "type": "git",
@@ -43,11 +44,16 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "@types/jasmine": "^3.6.0",
     "fs-extra": "^8.1.0",
+    "jasmine": "^3.6.2",
+    "jasmine-spec-reporter": "^6.0.0",
+    "jasmine-ts": "^0.3.0",
     "nodemon": "^2.0.2",
+    "nyc": "^15.1.0",
     "puppeteer": "^2.0.0",
-    "ts-node": "^8.5.4",
+    "ts-node": "^8.10.2",
     "tslint": "^5.20.1",
-    "typescript": "^3.7.4"
+    "typescript": "^3.9.7"
   }
 }
