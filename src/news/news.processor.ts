@@ -1,6 +1,9 @@
 import _ from 'lodash'
 import querystring from 'querystring'
+
+import { BASE_URL, MAX_NEWS_PAGE } from '../constants/constant'
 import { logger } from '../util/logger'
+
 // tslint:disable-next-line: no-var-requires
 const chromium = require('chrome-aws-lambda')
 
@@ -10,7 +13,6 @@ interface INewsResult {
 }
 
 class NewsProcessor {
-  private baseUrl: string = 'https://sports.news.naver.com'
   private path: string = '/wfootball/news/index.nhn?isphoto=N&view=text&type=popular'
   private selector: string = 'div#_newsList ul'
   private pageSelector: string = 'div#_pageList'
@@ -21,23 +23,21 @@ class NewsProcessor {
     await this.openPage()
     // Error: 400: Bad Request: message is too long
     // const maxPage = Number(await this.getPageCount(date, 1))
-    const maxPage = 3
+    logger.info(`${date}'s maxPage is ${MAX_NEWS_PAGE}, start crawling news headline from each pages.`)
 
-    logger.info(`${date}'s maxPage is ${maxPage}, start crawling news headline from each pages.`)
-
-    if (!Number.isInteger(maxPage)) {
-      throw new Error(`Invalid maxPage: ${maxPage}`)
+    if (!Number.isInteger(MAX_NEWS_PAGE)) {
+      throw new Error(`Invalid maxPage: ${MAX_NEWS_PAGE}`)
     }
 
     const result = []
-    for (const page of _.range(1, maxPage + 1)) {
+    for (const page of _.range(1, MAX_NEWS_PAGE + 1)) {
       logger.info(`Current page: ${page}`)
       const currentHeadlines: [INewsResult] = await this.getPageHeadlines(date, page)
       result.push(currentHeadlines)
     }
 
     return _.flatten(result).map((news: INewsResult) => {
-      news.href = this.baseUrl + news.href
+      news.href = BASE_URL + news.href
       return news
     })
   }
@@ -58,7 +58,7 @@ class NewsProcessor {
   }
 
   private getPageHeadlines = async (date: string, page: number): Promise<any> => {
-    const url = `${this.baseUrl}${this.path}`
+    const url = `${BASE_URL}${this.path}`
     const opts = {
       date,
       page
@@ -78,7 +78,7 @@ class NewsProcessor {
   }
 
   private getPageCount = async (date: string, page: number): Promise<any> => {
-    const url = `${this.baseUrl}${this.path}`
+    const url = `${BASE_URL}${this.path}`
     const opts = {
       date,
       page
