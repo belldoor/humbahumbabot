@@ -13,7 +13,7 @@
     "dev": "nodemon --watch src -e ts --exec npm run dev:start",
     "start": "node -r dotenv/config .",
     "test": "ts-node node_modules/jasmine/bin/jasmine --config=jasmine.json",
-    "coverage": "nyc -r text -e .ts -x \"tests/*.test.ts\" npm run test"
+    "coverage": "nyc -r text -e .ts -x \"spec/*.spec.ts\" npm run test"
   },
   "repository": {
     "type": "git",
