@@ -1,6 +1,8 @@
 import * as express from 'express'
 import moment from 'moment'
 import Telegraf from 'telegraf'
+
+import { MAX_NEWS_PAGE } from '../constants/constant'
 import { logger } from '../util/logger'
 import NewsProcessor from './news.processor'
 
@@ -51,9 +53,11 @@ class NewsController {
 
     try {
       // HACK: Temporary using personal chatId
-      const titleMessage = `${date.format('YYYY년 MM월 DD일')}의 인기 해외 축구 뉴스 TOP 60을 보여줄게~`
-      await bot.telegram.sendMessage(PERSONAL_CHAT_ID, titleMessage, { parse_mode: 'Markdown'})
-      await bot.telegram.sendMessage(PERSONAL_CHAT_ID, resultMessage, { parse_mode: 'Markdown'})
+      const newsCountPerPage = 20
+      const totalNewsCount = MAX_NEWS_PAGE * newsCountPerPage
+      const titleMessage = `${date.format('YYYY년 MM월 DD일')}의 인기 해외 축구 뉴스 TOP ${totalNewsCount}을 보여줄게~`
+      await bot.telegram.sendMessage(PERSONAL_CHAT_ID, titleMessage, { parse_mode: 'Markdown' })
+      await bot.telegram.sendMessage(PERSONAL_CHAT_ID, resultMessage, { parse_mode: 'Markdown' })
     } catch (error) {
       throw new Error(error)
     }
