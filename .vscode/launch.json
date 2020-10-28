@@ -1,0 +1,34 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jasmine All",
+      "program": "${workspaceFolder}/node_modules/jasmine/bin/jasmine",
+      "args": ["${workspaceFolder}/dist/spec/*.js"],
+      "preLaunchTask": "npm: build",
+      "postDebugTask": "RemoveTSOutputFolder",
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jasmine Current File",
+      "program": "${workspaceFolder}/node_modules/jasmine/bin/jasmine",
+      "args": [
+        "${workspaceFolder}/dist/spec/${fileBasenameNoExtension}.js"
+      ],
+      "preLaunchTask": "npm: build",
+      "postDebugTask": "RemoveTSOutputFolder",
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ]
+}
